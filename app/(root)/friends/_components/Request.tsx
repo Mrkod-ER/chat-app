@@ -5,9 +5,12 @@ import { api } from '@/convex/_generated/api';
 import { Id } from '@/convex/_generated/dataModel'
 import { useMutationState } from '@/hooks/useMutationState';
 import { AvatarFallback } from '@radix-ui/react-avatar';
+import { error } from 'console';
 import { useMutation } from 'convex/react';
+import { ConvexError } from 'convex/values';
 import { Check, User, X } from 'lucide-react';
 import React from 'react'
+import { toast } from 'sonner';
 
 type Props = {
     id: Id<"requests">
@@ -37,10 +40,19 @@ const Request = ({ id, imageUrl, username,
         </div>
     </div>
         <div className='flex items-center gap-2' >
-            <Button size={'icon'} onClick={() => {}} >
+            <Button size={'icon'} disabled={denyPending} onClick={() => {}} >
                 <Check />
             </Button>
-            <Button size={'icon'} variant={'destructive'} onClick={() => {}} >
+            <Button size={'icon'} disabled={denyPending} variant={'destructive'} onClick={() => {
+                denyRequest({id}).then(() => {
+                    toast.success("Friend request denied")
+                }).catch((error) => {
+                    toast.error( error instanceof
+                        ConvexError ? error.data
+                        : "Unexpected error occured"
+                    )
+                })
+            }} >
                 <X className='h-4 w-4' />
             </Button>
         </div>
