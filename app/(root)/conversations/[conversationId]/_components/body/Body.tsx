@@ -7,9 +7,14 @@ import React from 'react'
 import Message from './Message'
 
 type Props = {
+  members?: {
+    lastSeenMessageId?: Id<"messages">;
+    username?: string; 
+    [key: string]: any; 
+  }[];
 }
 
-const Body = (props : Props) => {
+const Body = ({ members = [] }: Props) => {
     const {conversationId} = useConversation();
 
     const messages = useQuery(api.messages.get,{

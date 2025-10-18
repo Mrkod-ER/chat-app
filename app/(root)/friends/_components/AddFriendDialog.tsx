@@ -15,7 +15,7 @@ import { api } from '@/convex/_generated/api';
 import { toast } from 'sonner';
 import { ConvexError } from 'convex/values';
 
-type Props = {}
+type Props = Record<string, never>
 
 const addFriendFormSchema = z.object({
     email: z.string().min(1, {message: "This field cannot be empty"}).email("Please enter a valid email"),

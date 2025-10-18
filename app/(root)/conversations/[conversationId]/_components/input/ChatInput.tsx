@@ -6,7 +6,7 @@ import { useConversation } from '@/hooks/useConversation'
 import { useMutationState } from '@/hooks/useMutationState'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ConvexError } from 'convex/values'
-import React, { useRef } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import z from 'zod';
@@ -22,7 +22,6 @@ const chatMessageSchema = z.object({
 });
 
 const ChatInput = () => {
-    const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const {conversationId} = useConversation();
 
     const {mutate: createMessage, pending} = useMutationState(api.message.create)
@@ -35,8 +34,16 @@ const ChatInput = () => {
         }
     });
 
-    const handleInputChange = (event: any) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         const {value, selectionStart} = event.target;
+
+        if(selectionStart !== null) {
+            form.setValue("content", value);
+        }
+    }
+
+    const handleInputClick = (event: React.MouseEvent<HTMLTextAreaElement>) => {
+        const {value, selectionStart} = event.currentTarget;
 
         if(selectionStart !== null) {
             form.setValue("content", value);
@@ -73,7 +80,7 @@ const ChatInput = () => {
                                         await form.handleSubmit(handleSubmit)();
                                     }
                                 }}
-                                rows={1} maxRows={3} {...field} onChange={handleInputChange} onClick={handleInputChange} placeholder='Type a message' className='min-h-full w-full resize-none border-0 outline-0 bg-card text-card-foreground placeholder:text-muted-foreground
+                                rows={1} maxRows={3} {...field} onChange={handleInputChange} onClick={handleInputClick} placeholder='Type a message' className='min-h-full w-full resize-none border-0 outline-0 bg-card text-card-foreground placeholder:text-muted-foreground
                                 p-1.5' />
                             </FormControl>
                             <FormMessage/>
