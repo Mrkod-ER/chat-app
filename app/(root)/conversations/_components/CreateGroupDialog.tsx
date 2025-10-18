@@ -18,7 +18,6 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import z from 'zod'
 
-type Props = Record<string, never>
 
 const createGroupFormSchema = z.object({
     name: z.string().min(1, { message: "This field can't be empty "}),
@@ -26,7 +25,7 @@ const createGroupFormSchema = z.object({
 
 });
 
-const CreateGroupDialog = (props: Props) => {
+const CreateGroupDialog = () => {
     const friends = useQuery(api.friends.get)
 
     const {mutate: createGroup, pending } = useMutationState(api.conversation.createGroup)
@@ -43,7 +42,7 @@ const CreateGroupDialog = (props: Props) => {
 
     const unselectedFriends = useMemo(() => {
         return friends ? friends.filter((friend: {_id: string} )=> !members.includes(friend._id)) : [];
-    }, [members.length, friends?.length]);
+    }, [friends, members]);
 
     const handleSubmit = async (values: z.infer<typeof createGroupFormSchema>) => {
         await createGroup({name: values.name,

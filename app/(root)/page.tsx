@@ -1,8 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { SignInButton, UserButton } from "@clerk/nextjs";
+import { SignInButton } from "@clerk/nextjs";
 import { Authenticated, Unauthenticated } from "convex/react";
-import Link from "next/link";
 
 
 export default function Home() {

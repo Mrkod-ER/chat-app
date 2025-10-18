@@ -6,15 +6,8 @@ import { useQuery } from 'convex/react'
 import React from 'react'
 import Message from './Message'
 
-type Props = {
-  members?: {
-    lastSeenMessageId?: Id<"messages">;
-    username?: string; 
-    [key: string]: any; 
-  }[];
-}
 
-const Body = ({ members = [] }: Props) => {
+const Body = () => {
     const {conversationId} = useConversation();
 
     const messages = useQuery(api.messages.get,{
