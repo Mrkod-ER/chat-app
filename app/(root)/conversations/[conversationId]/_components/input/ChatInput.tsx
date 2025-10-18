@@ -14,7 +14,6 @@ import TextareaAutosize from "react-textarea-autosize"
 import { Button } from '@/components/ui/button'
 import { SendHorizonal } from 'lucide-react'
 
-type Props = {}
 
 const chatMessageSchema = z.object({
     content: z.string().min(1, {

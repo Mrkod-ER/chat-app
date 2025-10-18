@@ -3,20 +3,18 @@ import { api } from '@/convex/_generated/api'
 import { Id } from '@/convex/_generated/dataModel'
 import { useConversation } from '@/hooks/useConversation'
 import { useQuery } from 'convex/react'
-import React, { useEffect } from 'react'
+import React from 'react'
 import Message from './Message'
-import { useMutationState } from '@/hooks/useMutationState'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
 type Props = {
-  // members: {
-  //   lastSeenMessageId?: Id<"messages">;
-  //   username?: string; 
-  //   [key: string]: any; 
-  // }[];
+  members?: {
+    lastSeenMessageId?: Id<"messages">;
+    username?: string; 
+    [key: string]: any; 
+  }[];
 }
 
-const Body = (props : Props) => {
+const Body = ({ members = [] }: Props) => {
     const {conversationId} = useConversation();
 
     const messages = useQuery(api.messages.get,{
@@ -34,39 +32,6 @@ const Body = (props : Props) => {
     //   }
     // }, [messages?.length, conversationId, markRead]);
 
-    const formatSeenBy = (names: string[]) => {
-      switch(names.length) {
-        case 1: 
-          return <p className='text-muted-foreground text-sm text-right' >
-            {`Seen by ${names[0]}`}
-          </p>
-        case 2: 
-          return <p className='text-muted-foreground text-sm text-right' >
-          {`Seen by ${names[0]} and ${names[1]}`}
-          </p>
-        default: 
-          return <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <p className='text-muted-foreground text-sm text-right'>
-                  {
-                    `Seen by ${names[0]}, ${names[1]}, and ${names.length - 2} more`
-                  }
-                </p>
-              </TooltipTrigger>
-              <TooltipContent>
-                <ul>
-                  {names.map((name, index) => {
-                    return <li key={index}>
-                      {name}
-                    </li>
-                  })}
-                </ul>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-      }
-    }
 
     // const getSeenMessage = (messageId: Id<"messages">) => {
     //   const seenUsers = members.filter(member => member.lastSeenMessageId === messageId).map(user => user.username!.split(" ")[0])
