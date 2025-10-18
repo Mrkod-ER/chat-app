@@ -10,7 +10,7 @@ export default function Home() {
     <div className="flex flex-col ">
       <Authenticated>
         <div className="w-full" >
-      
+          <p>You are signed in move to the conversation page</p>
         </div>
       </Authenticated>
       <Unauthenticated>
