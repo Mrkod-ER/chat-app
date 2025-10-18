@@ -5,7 +5,6 @@ import ConvexClientProvider from "@/providers/ConvexClientProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ui/theme/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
-import { ClerkProvider } from "@clerk/clerk-react";
 
 
 export const metadata: Metadata = {
