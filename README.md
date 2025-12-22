@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chat App
+
+[![License](https://img.shields.io/github/license/Mrkod-ER/chat-app)](LICENSE)
+[![Vercel Deploy](https://vercel.com/button)](https://chat-app-brown-one.vercel.app/)
+
+A real-time chat application built with Next.js, Convex, Clerk, and WebSockets—offering fast, secure, and modern messaging.
+
+## Live Demo
+
+👉 [Try it on Vercel!](https://chat-app-brown-one.vercel.app/)
+
+## Features
+
+- **Real-Time Messaging:** Chat instantly powered by WebSockets.
+- **Authentication:** Seamless sign-up/sign-in with [Clerk](https://clerk.com/).
+- **Database:** [Convex](https://convex.dev/) drives flexible and scalable data handling.
+- **Next.js:** Fast, fullstack React framework.
+- **Secure Sessions:** Authentication and authorization everywhere.
+- **Responsive UI:** Fully mobile and desktop compatible.
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/)
+- [Convex](https://convex.dev/)
+- [Clerk](https://clerk.com/)
+- WebSockets
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Mrkod-ER/chat-app.git
+cd chat-app
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env.local` in the root directory:
+
+```env
+# Clerk
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+
+# Convex
+CONVEX_DEPLOY_KEY=your_convex_deploy_key
+CONVEX_URL=your_convex_url
+```
+
+Get keys from [Clerk](https://dashboard.clerk.com/) and [Convex](https://dashboard.convex.dev/).
+
+### 4. Start Convex Locally (Optional)
+
+Install CLI and start:
+
+```bash
+npm install -g convex
+convex dev
+```
+
+Or connect to remote Convex.
+
+### 5. Run the Development Server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+chat-app/
+├── convex/         # Convex backend functions
+├── app/            # Next.js routes/app directory
+├── components/     # React UI components
+├── public/         # Static assets
+├── styles/         # CSS files
+├── utils/          # Utility functions
+├── .env.local      # Environment variables
+├── README.md
+└── package.json
+```
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+- Sign up or log in with Clerk.
+- Join or create a chat room.
+- Send and receive live messages (WebSocket-powered).
+- Data stored via Convex.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ready to deploy on [Vercel](https://vercel.com/), Netlify, or custom servers.
 
-## Deploy on Vercel
+- Push repo to GitHub.
+- Configure environment variables in your deployment platform.
+- For Vercel: Connect the repo, set environment variables, and deploy.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## References
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Docs](https://nextjs.org/docs)
+- [Convex Docs](https://docs.convex.dev)
+- [Clerk Docs](https://docs.clerk.com)
+- [WebSockets Guide](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
+
+## License
+
+This project is [MIT Licensed](LICENSE).
+
+---
+
+Made with ❤️ using Next.js, Convex, Clerk, and WebSockets.
