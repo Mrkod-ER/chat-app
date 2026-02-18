@@ -123,8 +123,8 @@ function UnauthenticatedHome() {
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 pt-8 w-full max-w-lg mx-auto">
-            <AnimatedStat value="10K+" label="Active Users" />
-            <AnimatedStat value="1M+" label="Messages Sent" />
+            <AnimatedStat value="100" label="Active Users" />
+            <AnimatedStat value="1000" label="Messages Sent" />
             <AnimatedStat value="99.9%" label="Uptime" />
           </div>
 
