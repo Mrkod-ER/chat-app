@@ -130,6 +130,7 @@ function UnauthenticatedHome() {
 
           {/* Scroll Indicator */}
           <button
+          
             onClick={() => document.getElementById("preview")?.scrollIntoView({ behavior: "smooth" })}
             className="mx-auto pt-4 animate-bounce text-muted-foreground hover:text-foreground transition-colors flex flex-col items-center gap-1"
           >
