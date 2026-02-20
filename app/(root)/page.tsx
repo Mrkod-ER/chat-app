@@ -126,11 +126,12 @@ function UnauthenticatedHome() {
             <AnimatedStat value="100" label="Active Users" />
             <AnimatedStat value="1000" label="Messages Sent" />
             <AnimatedStat value="99.9%" label="Uptime" />
+            
           </div>
 
           {/* Scroll Indicator */}
           <button
-          
+
             onClick={() => document.getElementById("preview")?.scrollIntoView({ behavior: "smooth" })}
             className="mx-auto pt-4 animate-bounce text-muted-foreground hover:text-foreground transition-colors flex flex-col items-center gap-1"
           >
